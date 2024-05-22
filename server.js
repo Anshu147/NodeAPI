@@ -6,6 +6,7 @@ app.use(express.json())
 app.get('/',(req,res)=>{
     res.send("Hello Node API")
 })
+//TO GET SPECIFIC MOVIE DETAIL
 app.get("/movie/:id",async(req,res)=>{
     try {
         const {id}= req.params;
@@ -15,6 +16,7 @@ app.get("/movie/:id",async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+//TO GET ALL THE MOVIES
 app.get("/allmovie",async(req,res)=>{
     try {
         const movie = await Movie.find({})
@@ -23,6 +25,7 @@ app.get("/allmovie",async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+//TO ADD MOVIE DETAIL
 app.post('/movies',async(req,res)=>{
     try {
         const movie = await Movie.create(req.body)
@@ -32,6 +35,7 @@ app.post('/movies',async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+//TO DELETE MOVIE SPECIFICALLY 
 app.delete("/movie/:id",async(req,res)=>{
     try {
         const {id}= req.params;
@@ -44,6 +48,7 @@ app.delete("/movie/:id",async(req,res)=>{
         res.status(500).json({message:error.message})
     }
 })
+//TO UPDATE MOVIE DETAIL BY ID
 app.put("/movie/:id",async(req,res)=>{
     try {
         const {id}= req.params;
